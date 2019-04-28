@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset=utf8>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>设置</title>
+</head>
+
+<body>
+    <link rel="stylesheet" type="text/css" href="Set.css">
+    <div id="app">
+        <v-app id="inspire">
+            <v-container fluid>
+                <div style="max-width: 570px">
+                    <v-card height="500px">
+                        <v-container fluid grid-list-lg>
+                            <v-layout row wrap>
+                                <v-flex xs12>
+                                    <v-toolbar :color="color" dark id="reallycolor">
+                                        <v-toolbar-title>Setting Time</v-toolbar-title>
+                                        <v-spacer></v-spacer>
+                                        <v-icon>build</v-icon>
+                                    </v-toolbar>
+                                    <v-flex xs12>
+                                        <v-card color="azure" class="white--text">
+                                            <v-layout row>
+                                                <v-flex xs12>
+                                                    <v-img :src="imgs[i]" height="300px" contain id="setimg"></v-img>
+                                                </v-flex>
+                                            </v-layout>
+                                            <v-card-actions>
+                                                <v-btn flat :color="color" v-on:click="like">
+                                                    <v-icon :color="love">favorite</v-icon>like
+                                                </v-btn>
+                                                <v-btn flat :color="color" v-on:click="dislike">
+                                                    <v-icon color="grey">thumb_down</v-icon>hate
+                                                </v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-flex>
+                                    <v-card-text class="headline mb-0">
+                                        do you like this photo?
+                                    </v-card-text>
+                            </v-layout>
+                        </v-container>
+                    </v-card>
+                </div>
+                <div style="position: absolute; bottom: 300px;right: 0px;">
+                    <v-card max-width="300px" :color="color">
+                        <v-layout align-end justify-end column />
+                        <v-flex>
+                            <v-select v-model="select" :items="worktimes" item-text="work" menu-props="auto"
+                                label="select" hide-details prepend-icon="query_builder" single-line return-object>
+                            </v-select>
+                            <v-select v-model="select2" :items="resttimes" item-text="rest" menu-props="auto"
+                                label="select2" hide-details prepend-icon="camera" single-line return-object>
+                            </v-select>
+                        </v-flex>
+                        </v-layout>
+                        <v-spacer></v-spacer>
+                        <v-flex>
+                            <v-text-field v-model="message" label="请输入这段时间你最不想打开的程序名" type="text"
+                                hint="例如,steam.exe，LOL.exe，DNF.exe" persistent-hint clearable></v-text-field>
+                            <v-layout align-end column />
+                            <div>
+                                <v-btn color="error" id="submit" onclick="toPage2()">Submit</v-btn>
+                            </div>
+                        </v-flex>
+                        <v-spacer></v-spacer>
+                    </v-card>
+                </div>
+            </v-container>
+            <p hidden id="worktime">{{select.work}}</p>
+            <v-progress-linear :indeterminate="true" :color="color"></v-progress-linear>
+            <p hidden id="resttime">{{select2.rest}}</p>
+            <p hidden id="hrefcolor">{{color}}</p>
+            <v-card height="100px">
+                <v-bottom-nav :active.sync="bottomNav" :color="color" :value="true" absolute dark>
+                    <v-btn dark>
+                        <span>deep orange</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+
+                    <v-btn dark>
+                        <span>teal</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+
+                    <v-btn dark>
+                        <span>grey</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+
+                    <v-btn dark>
+                        <span>sky blue</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+                    <v-btn dark>
+                        <span>Cream cake</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+                    <v-btn dark>
+                        <span>original</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+                    <v-btn dark>
+                        <span>purple</span>
+                        <v-icon>radio_button_unchecked</v-icon>
+                    </v-btn>
+                </v-bottom-nav>
+            </v-card>
+        </v-app>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+    <script src="set.js"></script>
+    <script>
+        require('./renderer.js')
+    </script>
+</body>
+
+</html>

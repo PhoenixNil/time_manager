@@ -1,0 +1,46 @@
+.A {
+    -webkit-app-region: no-drag;
+}
+
+h1 {
+    text-align: center;
+}
+
+.B {
+    -webkit-app-region: no-drag;
+}
+
+html {
+    overflow-y: hidden;
+}
+
+.button {
+    border: none;
+}
+
+.mainbutton {
+    -webkit-app-region: no-drag;
+}
+.sign{
+    -webkit-app-region: no-drag;
+}
+.mx-auto{
+    -webkit-app-region: no-drag;
+}
+.mainbutton:active {
+    background: #4568DC;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #B06AB3, #4568DC);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #B06AB3, #4568DC);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+.sign2{
+    -webkit-app-region: no-drag;
+    background: #C9D6FF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  
+background: linear-gradient(to right, #E2E2E2, #C9D6FF); 
+
+}

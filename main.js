@@ -1,23 +1,35 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
-
+const { app, BrowserWindow } = require('electron')
+const ipcMain = require('electron').ipcMain
+const electron = require('electron')
+const Menu = electron.Menu
+const exec = require('child_process').exec
+const fs = require('fs')
+const execFile = require('child_process').execFile;
+const readline = require('readline');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-
-function createWindow () {
+let SetWindow
+var K, flag = 0;
+function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 900, height: 690, frame: false,
     webPreferences: {
       nodeIntegration: true
     }
   })
-
+  SetWindow = new BrowserWindow({
+    width: 900, height: 790, webPreferences: {
+      nodeIntegration: true
+    }, resizable: false
+  })
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
-
+  SetWindow.loadFile('SetWindow.html')
+  SetWindow.hide()
+  Menu.setApplicationMenu(null)
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
@@ -27,6 +39,11 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
+    app.quit()
+  })
+  SetWindow.on('closed', function () {
+    exec('close.bat')
+    app.quit();
   })
 }
 
@@ -47,6 +64,106 @@ app.on('activate', function () {
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow()
 })
-
+ipcMain.on('window-all-closed', () => {
+  mainWindow.close();
+});
+ipcMain.on('hide-window', () => {
+  mainWindow.minimize();
+});
+ipcMain.on('two-show', function () {
+  mainWindow.hide();
+  SetWindow.show();
+})
+ipcMain.on('BackSet', function () {
+  SetWindow.loadFile('SetWindow.html')
+})
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+// 监听渲染进程发送的消息
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host: 'rm-bp10gf4820h8cb8ud2o.mysql.rds.aliyuncs.com',//远程MySQL数据库的ip地址
+  user: 'root',
+  password: 'zjhZJH8656866',
+  database: 'electron-test'
+})
+connection.connect(function (err) {
+  if (err) {
+    throw err;
+  }
+  else {
+    console.log('Connected');
+  }
+});
+ipcMain.on('create', (event, arg1, arg2) => {
+  var addSql = 'INSERT INTO user_information(user,password) VALUES(?,?)';
+  var addSqlParams = [arg1, arg2];
+  connection.query(addSql, addSqlParams, function (err, result) {
+    if (err) {
+      event.sender.send('error');
+      console.log('[INSERT ERROR] - ', err.message);
+
+      return;
+    }
+    // console.log('--------------------------INSERT----------------------------');
+    //console.log('INSERT ID:',result.insertId);    
+    event.sender.send('OK');
+    console.log('INSERT ID:', result);
+
+    // console.log('-----------------------------------------------------------------\n\n');
+  });
+})
+ipcMain.on('find', (event, arg1, arg2) => {
+  var sql = 'select * from user_information WHERE user=?AND password=?';
+  connection.query(sql, [arg1, arg2], function (err, result) {
+    if (err) {
+      console.log('[SELECT ERROR] - ', err.message);
+      return;
+    }
+    if (!result.length) {
+      console.log("password error");
+      event.sender.send('fail')
+      return;
+    }
+    K = arg1;
+    flag = 1;
+    console.log('--------------------------SELECT----------------------------');
+    console.log(result[0]);
+    var temp = JSON.stringify(result)
+    var temp = JSON.parse(temp)
+    console.log(temp);
+    event.sender.send('success', temp[0].count);
+    console.log('------------------------------------------------------------\n\n');
+  });
+})
+ipcMain.on('achieve', function () {
+  if (flag == 0)
+    return;
+  else {
+    var modSql = 'UPDATE user_information SET count = count+1  WHERE user = ?';
+    var modSqlParams = K;
+    connection.query(modSql, modSqlParams, function (err, result) {
+      if (err) {
+        console.log('[UPDATE ERROR] - ', err.message);
+      }
+      console.log('--------------------------UPDATE----------------------------');
+      console.log('UPDATE affectedRows', result.affectedRows);
+      console.log('-----------------------------------------------------------------\n\n');
+    });
+  }
+}
+)
+ipcMain.on('exeDisable', (event, arg) => {
+  fs.writeFile('temp.txt', arg, function (err) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log("success")
+  })
+  execFile('my.bat', (error, stdout, stderr) => {
+    if (error) {
+      throw error;
+    }
+    console.log(stdout);
+  });
+})

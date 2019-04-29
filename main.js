@@ -167,3 +167,7 @@ ipcMain.on('exeDisable', (event, arg) => {
     console.log(stdout);
   });
 })
+process.on('uncaughtException', function (err) {
+  console.log(err.stack);
+  console.log('NOT exit...');
+});

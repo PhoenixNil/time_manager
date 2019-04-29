@@ -50,21 +50,24 @@
                     </v-card>
                 </div>
                 <div style="position: absolute; bottom: 300px;right: 0px;">
-                    <v-card max-width="300px" :color="color">
+                    <v-card max-width="300px">
                         <v-layout align-end justify-end column />
                         <v-flex>
                             <v-select v-model="select" :items="worktimes" item-text="work" menu-props="auto"
-                                label="select" hide-details prepend-icon="query_builder" single-line return-object>
+                                label="select" hide-details prepend-icon="query_builder" single-line return-object
+                                :color="color">
                             </v-select>
                             <v-select v-model="select2" :items="resttimes" item-text="rest" menu-props="auto"
-                                label="select2" hide-details prepend-icon="camera" single-line return-object>
+                                label="select2" hide-details prepend-icon="camera" single-line return-object
+                                :color="color">
                             </v-select>
                         </v-flex>
                         </v-layout>
                         <v-spacer></v-spacer>
                         <v-flex>
                             <v-text-field v-model="message" label="请输入这段时间你最不想打开的程序名" type="text"
-                                hint="例如,steam.exe，LOL.exe，DNF.exe" persistent-hint clearable></v-text-field>
+                                hint="例如,steam.exe，LOL.exe，DNF.exe" persistent-hint clearable :color="color">
+                            </v-text-field>
                             <v-layout align-end column />
                             <div>
                                 <v-btn color="error" id="submit" onclick="toPage2()">Submit</v-btn>

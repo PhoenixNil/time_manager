@@ -1,5 +1,5 @@
 var ipcRenderer = require('electron').ipcRenderer;
-new Vue({
+vm = new Vue({
     el: '#app',
     data() {
         return {
@@ -30,8 +30,17 @@ new Vue({
                 { title: 'Clair de lune' },
                 { title: 'flaming' }
             ],
+            singers: ["Mozart", "LA TALE", "Claude Debussy", "郑成河"],
+            dialog2: false
         }
-    }, computed: {
+    }, methods: {
+        choose: function (index) {
+            document.getElementById("song").innerHTML = vm.items[index].title
+            document.getElementById("music").src = vm.items[index].title + '.mp3'
+            document.getElementById("singer").innerHTML = vm.singers[index]
+        }
+    },
+    computed: {
         color() {
             return (decodeURI(document.URL).split('&')[2]).split('=')[1];
         }
@@ -67,33 +76,23 @@ function showtime() {
         s = 59
     }
     else
-        if (m != 0)
-            s = s - 1;
-    if (m == 0) {
-    }
-
-    if (m == 0 && s >= 0) {   //当时间为0分1秒时，暂停
+        s = s - 1;
+    if (m == 0 && s == 1) {   //当时间为0分1秒时，暂停
         m = 0
         s = 0
-        if (flag == 0) {
-            ipcRenderer.send("achieve")
-            flag = 1
-        }
-        clearTimeout(t);
+        ipcRenderer.send("achieve")
+        clearInterval(settime)
     }
 }
 // clearInterval(settime);
-
 function stopCount() {
+    clearInterval(settime);
     m = 0
     s = 0
-    clearTimeout(t);
-    showtime();
-}
-function startCount() {
-    m = work
-    s = 0
-    showtime()
+    // showtime();
+    document.getElementById('demo').innerHTML = 0 + "分" + 0 + "秒";
+
+
 }
 function backSetURL() {
     ipcRenderer.send('BackSet');
@@ -108,14 +107,14 @@ function NextSong() {
     document.getElementById("singer").innerHTML = singers[y++ % 3]
 
 }
-document.getElementById('rest').innerHTML = "休息时间" + K + "分钟"
+document.getElementById('rest').innerHTML = "休息时间:" + K + "分钟"
 const shell = require('electron').shell
 
 const exLinksBtn = document.getElementById('issue')
 const exLinksBtn2 = document.getElementById('about')
 
 exLinksBtn.addEventListener('click', function (event) {
-    shell.openExternal('https://github.com/PhoenixNil/simple-time-tooler/issues')
+    shell.openExternal('https://github.com/PhoenixNil/time_manager/issues')
 })
 exLinksBtn2.addEventListener('click', function (event) {
     shell.openExternal('https://www.glasstower.top/')

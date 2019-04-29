@@ -23,7 +23,7 @@
         <v-app id="inspire">
             <v-toolbar fixed app :color="color" dark>
                 <v-toolbar-title>
-                    停止是弱者的体现
+                    Menu
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn flat id="issue">
@@ -78,7 +78,7 @@
                                         <v-icon dark color="pink lighten-5">library_music</v-icon>播放列表
                                     </v-btn>
                                     <v-list>
-                                        <v-list-tile v-for="(item, index) in items" :key="index" @click="">
+                                        <v-list-tile v-for="(item, index) in items" :key="index" @click="choose(index)">
                                             <v-list-tile-title>{{ item.title }}</v-list-tile-title>
                                         </v-list-tile>
                                     </v-list>
@@ -97,22 +97,40 @@
                     <div>
                         <div>
                             <v-layout row wrap>
-                                <v-flex xs3>
+                                <v-flex xs5>
                                     <v-btn color="orange darken-2" dark Onclick="backSetURL()">
                                         <v-icon dark left>arrow_back</v-icon>Back
                                     </v-btn>
                                 </v-flex>
-                                <v-flex xs3>
-                                    <v-btn color="red" dark onClick="stopCount()">
-                                        <v-icon dark>stop</v-icon>stop
-                                    </v-btn>
+                                <v-flex xs5>
+                                    <h1><span>禁用程序:</span><span id="ban" class="ban"></span>
+                                    </h1>
                                 </v-flex>
-                                <v-flex xs3>
-                                    <v-btn color="green" dark onClick="startCount()">
-                                        <v-icon>cached</v-icon>restart
-                                    </v-btn>
-                                </v-flex>
-                                <span>当前禁用程序为:</span><span id="ban" class="ban"></span>
+                                <v-flex xs2>
+                                    <v-layout>
+                                        <v-btn color="red" dark @click.stop="dialog2 = true">
+                                            <v-icon dark>stop</v-icon>stop
+                                        </v-btn>
+                                        <v-dialog v-model="dialog2" max-width="290">
+                                            <v-card class="tinycard">
+                                                <v-card-title class="headline font-weight-bold">停止是弱者的体现
+                                                </v-card-title>
+                                                <v-card-text>你真的要停止吗？
+                                                </v-card-text>
+                                                <v-card-actions>
+                                                    <v-spacer></v-spacer>
+                                                    <v-btn :color="color" flat="flat" @click="dialog2 = false"
+                                                        depressed>
+                                                        我再想想
+                                                    </v-btn>
+                                                    <v-btn :color="color" flat="flat" @click="dialog2 = false"
+                                                        onClick="stopCount()">
+                                                        是
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
+                                        </v-dialog>
+                                    </v-layout>
                                 </v-flex>
                             </v-layout>
                         </div>

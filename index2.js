@@ -1,4 +1,5 @@
 var ipcRenderer = require('electron').ipcRenderer;
+songlist2 = ['IV. Molto allegro (第四乐章 很快的快板) - Berliner Philharmoniker&Herbert von Karajan&Wolfgang Amadeus Mozart.mp3', '尘世城.mp3', 'Clair De Lune.mp3', 'Flaming.mp3']
 vm = new Vue({
     el: '#app',
     data() {
@@ -25,7 +26,7 @@ vm = new Vue({
 
             ],
             items: [
-                { title: 'Menuet D major' },
+                { title: 'IV. Molto allegro (第四乐章 很快的快板)' },
                 { title: '尘世城' },
                 { title: 'Clair de lune' },
                 { title: 'flaming' }
@@ -35,8 +36,11 @@ vm = new Vue({
         }
     }, methods: {
         choose: function (index) {
-            document.getElementById("song").innerHTML = vm.items[index].title
-            document.getElementById("music").src = vm.items[index].title + '.mp3'
+            if (index == 0)
+                document.getElementById("music").src = "IV. Molto allegro (第四乐章 很快的快板) - Berliner Philharmoniker&Herbert von Karajan&Wolfgang Amadeus Mozart.mp3"
+            else
+                document.getElementById("music").src = songlist2[index % 4]
+            document.getElementById("song").innerHTML = vm.items[index % 4].title
             document.getElementById("singer").innerHTML = vm.singers[index]
         }
     },
@@ -100,11 +104,11 @@ function backSetURL() {
 }
 function NextSong() {
     songlist = ["尘世城.mp3", "Clair De Lune.mp3", "Flaming.mp3"]
-    song = ["尘世城", "Clair de lune", "flaming"]
-    singers = ["LA TALE", "Claude Debussy", "郑成河"]
-    document.getElementById("music").src = songlist[i++ % 3]
-    document.getElementById("song").innerHTML = song[j++ % 3]
-    document.getElementById("singer").innerHTML = singers[y++ % 3]
+    song = ["IV. Molto allegro (很快的快板)", "尘世城", "Clair de lune", "flaming"]
+    singers = ["Mozart", "LA TALE", "Claude Debussy", "郑成河"]
+    document.getElementById("music").src = songlist2[i++ % 4]
+    document.getElementById("song").innerHTML = song[j++ % 4]
+    document.getElementById("singer").innerHTML = singers[y++ % 4]
 
 }
 document.getElementById('rest').innerHTML = "休息时间:" + K + "分钟"

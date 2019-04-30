@@ -4,6 +4,7 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
+    "package-win": "electron-packager .  --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"realse\"",
     "start": "electron ."
   },
   "repository": "https://github.com/electron/electron-quick-start",
@@ -17,7 +18,8 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^5.0.0"
+    "electron": "^5.0.0",
+    "electron-packager": "^13.1.1"
   },
   "dependencies": {
     "mysql": "^2.17.1"

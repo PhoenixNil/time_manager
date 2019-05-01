@@ -11,7 +11,7 @@
 
 
 <body style="-webkit-app-region: drag">
-  <link rel="stylesheet" type="text/css" href="relase.css">
+  <link rel="stylesheet" type="text/css" href="./css/relase.css">
   <div id="app">
     <v-app id="inspire">
       <div>
@@ -136,16 +136,16 @@
       <v-card>
         <v-img :src="imgs[i]" height="610">
         </v-img>
-        <v-card-action>
-          <v-layout align-center justify-center row  />
+        <v-card-actions>
+          <v-layout align-center justify-center row />
           <v-btn id="mainbt" class="mainbutton">开始</v-btn>
-        </v-card-action>
+        </v-card-actions>
       </v-card>
     </v-app>
   </div>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
-  <script src="index.js"></script>
+  <script src="./js/index.js"></script>
   <script>
     // You can also require other files to run in this process
     require('./renderer.js')

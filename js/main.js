@@ -7,6 +7,7 @@ const exec = require('child_process').exec
 const fs = require('fs')
 const execFile = require('child_process').execFile;
 const readline = require('readline');
+const path = require('path')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -154,13 +155,13 @@ ipcMain.on('achieve', function () {
 }
 )
 ipcMain.on('exeDisable', (event, arg) => {
-  fs.writeFile('temp.txt', arg, function (err) {
+  fs.writeFile(path.join(__dirname, '../other/temp.txt'), arg, function (err) {
     if (err) {
       return console.error(err);
     }
     console.log("success")
   })
-  execFile('my.bat', (error, stdout, stderr) => {
+  execFile(path.join(__dirname, '../other/my.bat'), (error, stdout, stderr) => {
     if (error) {
       throw error;
     }
@@ -171,3 +172,4 @@ process.on('uncaughtException', function (err) {
   console.log(err.stack);
   console.log('NOT exit...');
 });
+console.log(require.resolve('electron'))

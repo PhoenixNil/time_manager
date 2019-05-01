@@ -4,7 +4,7 @@ var vm = new Vue({
     data() {
         return {
             i: Math.floor(Math.random() * 6),
-            imgs: ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg5.jpg", "bg6.jpg", "bg7.jpg"],
+            imgs: ["img/bg1.jpg", "img/bg2.jpg", "img/bg3.jpg", "img/bg5.jpg", "img/bg6.jpg", "img/bg7.jpg"],
             agreement: false,
             dialog: false,
             dialog2: false,
@@ -61,15 +61,15 @@ var vm = new Vue({
     }
 })
 document.getElementById("EleId").style.visibility = "hidden";
-var randombgs = [];
-randombgs[0] = "bg1.jpg"
-randombgs[1] = "bg2.jpg"
-randombgs[2] = "bg3.jpg"
-randombgs[3] = "bg5.jpg"
-randombgs[4] = "bg6.jpg"
-randombgs[5] = "bg7.jpg"
-var randomBgIndex = Math.round(Math.random() * 5);
-document.write('<style>body{background-image:url(' + randombgs[randomBgIndex] + ')}</style>');
+// var randombgs = [];
+// randombgs[0] = "/img/bg1.jpg"
+// randombgs[1] = "/img/bg2.jpg"
+// randombgs[2] = "/img/bg3.jpg"
+// randombgs[3] = "/img/bg5.jpg"
+// randombgs[4] = "/img/bg6.jpg"
+// randombgs[5] = "/img/bg7.jpg"
+// var randomBgIndex = Math.round(Math.random() * 5);
+// document.write('<style>body{background-image:url(' + randombgs[randomBgIndex] + ')}</style>');
 //关闭窗口
 document.getElementById('closebt').addEventListener('click', () => {
     ipcRenderer.send('window-all-closed');

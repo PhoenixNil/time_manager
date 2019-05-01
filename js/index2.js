@@ -5,22 +5,22 @@ vm = new Vue({
         return {
             imgs: [
                 {
-                    src: '1.jpg'
+                    src: 'img/1.jpg'
                 },
                 {
-                    src: '2.jpg'
+                    src: 'img/2.jpg'
                 },
                 {
-                    src: '3.jpg'
+                    src: 'img/3.jpg'
                 },
                 {
-                    src: '4.jpg'
+                    src: 'img/4.jpg'
                 },
                 {
-                    src: '5.jpg'
+                    src: 'img/5.jpg'
                 },
                 {
-                    src: '6.jpg'
+                    src: 'img/6.jpg'
                 },
 
             ],
@@ -31,13 +31,15 @@ vm = new Vue({
                 { title: 'flaming' }
             ],
             singers: ["Mozart", "LA TALE", "Claude Debussy", "郑成河"],
-            dialog2: false
+            dialog2: false,
+            dialog: false
         }
     }, methods: {
         choose: function (index) {
             document.getElementById("song").innerHTML = vm.items[index].title
-            document.getElementById("music").src = vm.items[index].title + '.mp3'
             document.getElementById("singer").innerHTML = vm.singers[index]
+            document.getElementById("music").src = songlist1[index]
+
         }
     },
     computed: {
@@ -66,6 +68,7 @@ var j = 0
 var y = 0
 var z = 0
 var flag = 0;
+songlist1 = ["audio/Menuet D Major.mp3", "audio/尘世城.mp3", "audio/Clair De Lune.mp3", "audio/Flaming.mp3"]
 var settime = setInterval(function () {
     showtime();
 }, 1000);
@@ -77,11 +80,12 @@ function showtime() {
     }
     else
         s = s - 1;
-    if (m == 0 && s == 1) {   //当时间为0分1秒时，暂停
+    if (m == 0 && s == -1) {   //当时间为0分1秒时，暂停
         m = 0
         s = 0
-        ipcRenderer.send("achieve")
-        clearInterval(settime)
+        if (flag == 0)
+            ipcRenderer.send("achieve")
+        clearTimeout(settime)
     }
 }
 // clearInterval(settime);
@@ -89,6 +93,7 @@ function stopCount() {
     clearInterval(settime);
     m = 0
     s = 0
+    flag = 1;
     // showtime();
     document.getElementById('demo').innerHTML = 0 + "分" + 0 + "秒";
 
@@ -99,7 +104,7 @@ function backSetURL() {
 
 }
 function NextSong() {
-    songlist = ["尘世城.mp3", "Clair De Lune.mp3", "Flaming.mp3"]
+    songlist = ["audio/尘世城.mp3", "audio/Clair De Lune.mp3", "audio/Flaming.mp3"]
     song = ["尘世城", "Clair de lune", "flaming"]
     singers = ["LA TALE", "Claude Debussy", "郑成河"]
     document.getElementById("music").src = songlist[i++ % 3]

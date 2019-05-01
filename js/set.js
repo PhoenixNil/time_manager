@@ -8,7 +8,7 @@ function toPage2() {
     localStorage.setItem("disableExe", vm.message);
 }
 function dislike() {
-    imgarray = ["bg11.jpg", "set2.jpg", "set3.jpg"]
+    imgarray = ["img/bg11.jpg", "img/set2.jpg", "img/set3.jpg"]
     document.getElementById("setimg").src = imgarray[i++]
 }
 var vm = new Vue({
@@ -27,7 +27,7 @@ var vm = new Vue({
             love: 'grey',
             i: Math.floor(Math.random() * 4),
             message: 'XXX.exe',
-            imgs: ["bg11.jpg", "set2.jpg", "set3.jpg", "set4.jpg"]
+            imgs: ["img/bg11.jpg", "img/set2.jpg", "img/set3.jpg", "img/set4.jpg"]
         }
     },
     methods: {

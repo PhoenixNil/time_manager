@@ -1,12 +1,13 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
+  "name": "time-manager",
+  "version": "3.7.0",
   "description": "A minimal Electron application",
-  "main": "main.js",
+  "main": "./js/main.js",
   "scripts": {
+    "package-win": "electron-packager .  --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"realse\"",
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/PhoenixNil/time_manager",
   "keywords": [
     "Electron",
     "quick",
@@ -17,9 +18,10 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^5.0.0"
+    "electron-packager": "^13.1.1"
   },
   "dependencies": {
+    "electron": "^5.0.0",
     "mysql": "^2.17.1"
   }
 }

@@ -37,15 +37,7 @@ vm = new Vue({
         }
     }, methods: {
         choose: function (index) {
-<<<<<<< HEAD:js/index2.js
             document.getElementById("song").innerHTML = vm.items[index].title
-=======
-            if (index == 0)
-                document.getElementById("music").src = "IV. Molto allegro (第四乐章 很快的快板) - Berliner Philharmoniker&Herbert von Karajan&Wolfgang Amadeus Mozart.mp3"
-            else
-                document.getElementById("music").src = songlist2[index % 4]
-            document.getElementById("song").innerHTML = vm.items[index % 4].title
->>>>>>> c77529f55ee6e32d322772975d638c4d763f757a:index2.js
             document.getElementById("singer").innerHTML = vm.singers[index]
             document.getElementById("music").src = songlist1[index]
 
@@ -113,21 +105,12 @@ function backSetURL() {
 
 }
 function NextSong() {
-<<<<<<< HEAD:js/index2.js
     songlist = ["audio/尘世城.mp3", "audio/Clair De Lune.mp3", "audio/Flaming.mp3"]
     song = ["尘世城", "Clair de lune", "flaming"]
     singers = ["LA TALE", "Claude Debussy", "郑成河"]
     document.getElementById("music").src = songlist[i++ % 3]
     document.getElementById("song").innerHTML = song[j++ % 3]
     document.getElementById("singer").innerHTML = singers[y++ % 3]
-=======
-    songlist = ["尘世城.mp3", "Clair De Lune.mp3", "Flaming.mp3"]
-    song = ["IV. Molto allegro (很快的快板)", "尘世城", "Clair de lune", "flaming"]
-    singers = ["Mozart", "LA TALE", "Claude Debussy", "郑成河"]
-    document.getElementById("music").src = songlist2[i++ % 4]
-    document.getElementById("song").innerHTML = song[j++ % 4]
-    document.getElementById("singer").innerHTML = singers[y++ % 4]
->>>>>>> c77529f55ee6e32d322772975d638c4d763f757a:index2.js
 
 }
 document.getElementById('rest').innerHTML = "休息时间:" + K + "分钟"

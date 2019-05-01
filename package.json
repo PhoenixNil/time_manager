@@ -18,10 +18,6 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-<<<<<<< HEAD
-=======
-    "electron": "^5.0.0",
->>>>>>> c77529f55ee6e32d322772975d638c4d763f757a
     "electron-packager": "^13.1.1"
   },
   "dependencies": {

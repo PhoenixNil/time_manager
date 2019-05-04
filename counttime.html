@@ -22,9 +22,7 @@
     <div id="app">
         <v-app id="inspire">
             <v-toolbar fixed app :color="color" dark>
-                <v-toolbar-title>
-                    Menu
-                </v-toolbar-title>
+                <v-toolbar-title>Menu</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-btn flat id="issue">
                     <v-icon>fab fa-github</v-icon>反馈
@@ -36,17 +34,14 @@
                         </v-btn>
 
                         <v-card>
-                            <v-card-text>
-                                设置时间，确定要做的事情
-                            </v-card-text>
+                            <v-card-text>设置时间，确定要做的事情</v-card-text>
 
                             <v-divider></v-divider>
                         </v-card>
                     </v-dialog>
                 </div>
-                </v-btn>
                 <v-btn flat href="https://i.loli.net/2019/02/10/5c5fd6a90dbd0.jpg">
-                    <v-icon color='pink'>favorite</v-icon>感谢
+                    <v-icon color="pink">favorite</v-icon>感谢
                 </v-btn>
                 <v-btn flat id="about">
                     <v-icon>filter_frames</v-icon>关于
@@ -57,8 +52,7 @@
             <v-content>
                 <v-flex xs16>
                     <v-carousel hide-controls>
-                        <v-carousel-item v-for="(img,i) in imgs" :key="i" :src="img.src">
-                        </v-carousel-item>
+                        <v-carousel-item v-for="(img,i) in imgs" :key="i" :src="img.src"></v-carousel-item>
                     </v-carousel>
                     <v-card height="90px">
                         <v-list>
@@ -69,8 +63,7 @@
                                 </v-list-tile-content>
                                 <v-list-tile-action :class="{ 'mx-5': $vuetify.breakpoint.mdAndUp }">
                                     <audio controls style=" width:300px;height:30px;" onended="NextSong()" id="music"
-                                        src="./audio/Menuet D Major.mp3">
-                                    </audio>
+                                        src="./audio/Menuet D Major.mp3"></audio>
                                 </v-list-tile-action>
                                 <span id="rest"></span>
                                 <v-menu open-on-hover top offset-y>
@@ -103,7 +96,9 @@
                                     </v-btn>
                                 </v-flex>
                                 <v-flex xs5>
-                                    <h1><span>禁用程序:</span><span id="ban" class="ban"></span>
+                                    <h1>
+                                        <span>禁用程序:</span>
+                                        <span id="ban" class="ban"></span>
                                     </h1>
                                 </v-flex>
                                 <v-flex xs2>
@@ -113,20 +108,14 @@
                                         </v-btn>
                                         <v-dialog v-model="dialog2" max-width="290">
                                             <v-card class="tinycard">
-                                                <v-card-title class="headline font-weight-bold">停止是弱者的体现
-                                                </v-card-title>
-                                                <v-card-text>你真的要停止吗？
-                                                </v-card-text>
+                                                <v-card-title class="headline font-weight-bold">停止是弱者的体现</v-card-title>
+                                                <v-card-text>你真的要停止吗？</v-card-text>
                                                 <v-card-actions>
                                                     <v-spacer></v-spacer>
                                                     <v-btn :color="color" flat="flat" @click="dialog2 = false"
-                                                        depressed>
-                                                        我再想想
-                                                    </v-btn>
+                                                        depressed>我再想想</v-btn>
                                                     <v-btn :color="color" flat="flat" @click="dialog2 = false"
-                                                        onClick="stopCount()">
-                                                        是
-                                                    </v-btn>
+                                                        onClick="stopCount()">是</v-btn>
                                                 </v-card-actions>
                                             </v-card>
                                         </v-dialog>

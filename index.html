@@ -20,14 +20,11 @@
             <v-dialog v-model="dialog" width="500">
               <template v-slot:activator="{ on }">
                 <v-btn color="red lighten-2" dark v-on="on" class="sign" @click="$refs.form.reset()">
-                  <v-icon>
-                    person_add</v-icon>
-                  sign up
+                  <v-icon>person_add</v-icon>sign up
                 </v-btn>
               </template>
               <v-card class="mx-auto" style="max-width: 500px;">
-                <v-card-title primary-title class="headline font-weight-bold"> 用户注册
-                </v-card-title>
+                <v-card-title primary-title class="headline font-weight-bold">用户注册</v-card-title>
                 <v-form ref="form" v-model="form" class="pa-3 pt-4">
                   <v-text-field v-model="email" :rules="[rules.email]" box color="deep-purple" label="Email address"
                     type="email" id="email"></v-text-field>
@@ -44,26 +41,22 @@
                 </v-form>
                 <v-card-actions>
                   <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
-                  <v-btn flat @click="$refs.form.reset()">
-                    Clear
-                  </v-btn>
+                  <v-btn flat @click="$refs.form.reset()">Clear</v-btn>
                   <v-spacer></v-spacer>
                   <v-btn :disabled="!form" :loading="isLoading" class="white--text" color="deep-purple accent-4"
                     v-on:click="submit" depressed id="Create">Create</v-btn>
-                  </v-btn>
                 </v-card-actions>
               </v-card>
-              </template>
             </v-dialog>
             <v-dialog v-model="dialog2" width="500">
               <template v-slot:activator="{ on }">
                 <v-btn color="orange" dark class="sign" v-on="on" @click="$refs.form.reset()" v-if="fade">
-                  <v-icon>account_circle</v-icon>
-                  sign in
+                  <v-icon>account_circle</v-icon>sign in
                 </v-btn>
               </template>
               <v-card class="sign2">
-                <v-card-title primary-title class="headline font-weight-bold"> <span class="grey--text">登录您的账户</span>
+                <v-card-title primary-title class="headline font-weight-bold">
+                  <span class="grey--text">登录您的账户</span>
                 </v-card-title>
                 <v-form ref="form" v-model="form" class="pa-3 pt-4">
                   <v-text-field v-model="email" :rules="[rules.email]" box color="deep-purple" label="Email address"
@@ -71,27 +64,24 @@
                   <v-text-field v-model="password" :append-icon="show1 ? 'visibility' : 'visibility_off'"
                     :rules="[rules.password, rules.length(6)]" :type="show1 ? 'text' : 'password'" name="input-10-1"
                     hint="请输入密码" counter @click:append="show1 = !show1" color="teal" prepend-icon="vpn_key">
+                  </v-text-field>
                 </v-form>
                 <v-card-actions>
                   <v-btn color="blue darken-1" flat @click="dialog2 = false">Close</v-btn>
-                  <v-btn flat @click="$refs.form.reset()">
-                    Clear
-                  </v-btn>
+                  <v-btn flat @click="$refs.form.reset()">Clear</v-btn>
                   <v-spacer></v-spacer>
-                  </v-btn>
                   <template>
                     <v-btn :disabled="!form" :loading="isLoading" class="white--text" color="pink" depressed
-                      @click.stop="land()">login<v-icon>
-                        send</v-icon>
+                      @click.stop="land()">
+                      login
+                      <v-icon>send</v-icon>
                     </v-btn>
                     <v-dialog v-model="dialog3" max-width="300">
                       <v-card>
                         <v-card-title class="headline">用户名不存在或者密码错误</v-card-title>
                         <v-card-actions>
                           <v-spacer></v-spacer>
-                          <v-btn color="green darken-1" flat="flat" @click="dialog3 = false">
-                            close
-                          </v-btn>
+                          <v-btn color="green darken-1" flat="flat" @click="dialog3 = false">close</v-btn>
                         </v-card-actions>
                       </v-card>
                     </v-dialog>
@@ -101,25 +91,20 @@
             </v-dialog>
             <v-dialog v-model="dialog4" width="500">
               <template v-slot:activator="{ on }">
-                <v-btn color="primary" dark v-on="on" class="sign" id="EleId">
-                  查看您的统计数据
-                </v-btn>
+                <v-btn color="primary" dark v-on="on" class="sign" id="EleId">查看您的统计数据</v-btn>
               </template>
               <v-card class="sign">
-                <v-card-title class="headline grey lighten-2" primary-title>
-                  Statistical data
-                </v-card-title>
+                <v-card-title class="headline grey lighten-2" primary-title>Statistical data</v-card-title>
                 <v-card-text>
-                  <p>已完成次数为:<span id="successcnt"></span></p>
+                  <p>
+                    已完成次数为:
+                    <span id="successcnt"></span>
+                  </p>
                 </v-card-text>
-
                 <v-divider></v-divider>
-
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" flat @click="dialog4 = false">
-                    关闭
-                  </v-btn>
+                  <v-btn color="primary" flat @click="dialog4 = false">关闭</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>

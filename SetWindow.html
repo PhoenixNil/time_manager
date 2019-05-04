@@ -25,26 +25,27 @@
                                         <v-spacer></v-spacer>
                                         <v-icon>build</v-icon>
                                     </v-toolbar>
-                                    <v-flex xs12>
-                                        <v-card color="azure" class="white--text">
-                                            <v-layout row>
-                                                <v-flex xs12>
-                                                    <v-img :src="imgs[i]" height="300px" contain id="setimg"></v-img>
-                                                </v-flex>
-                                            </v-layout>
-                                            <v-card-actions>
-                                                <v-btn flat :color="color" v-on:click="like">
-                                                    <v-icon :color="love">favorite</v-icon>like
-                                                </v-btn>
-                                                <v-btn flat :color="color" v-on:click="dislike">
-                                                    <v-icon color="grey">thumb_down</v-icon>hate
-                                                </v-btn>
-                                            </v-card-actions>
-                                        </v-card>
-                                    </v-flex>
-                                    <v-card-text class="headline mb-0">
-                                        do you like this photo?
-                                    </v-card-text>
+                                </v-flex>
+                                <v-flex xs12>
+                                    <v-card color="azure" class="white--text">
+                                        <v-layout row>
+                                            <v-flex xs12>
+                                                <v-img :src="imgs[i]" height="300px" contain id="setimg"></v-img>
+                                            </v-flex>
+                                        </v-layout>
+                                        <v-card-actions>
+                                            <v-btn flat :color="color" v-on:click="like">
+                                                <v-icon :color="love">favorite</v-icon>like
+                                            </v-btn>
+                                            <v-btn flat :color="color" v-on:click="dislike">
+                                                <v-icon color="grey">thumb_down</v-icon>hate
+                                            </v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+                                </v-flex>
+                                <v-card-text class="headline mb-0">
+                                    do you like this photo?
+                                </v-card-text>
                             </v-layout>
                         </v-container>
                     </v-card>

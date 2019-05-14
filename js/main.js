@@ -83,10 +83,10 @@ ipcMain.on('BackSet', function () {
 // 监听渲染进程发送的消息
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host: 'rm-bp10gf4820h8cb8ud2o.mysql.rds.aliyuncs.com',//远程MySQL数据库的ip地址
-  user: 'root',
+  host: 'db4free.net',//远程MySQL数据库的ip地址
+  user: 'ooot2007',
   password: 'zjhZJH8656866',
-  database: 'electron-test'
+  database: 'electron_test'
 })
 connection.connect(function (err) {
   if (err) {

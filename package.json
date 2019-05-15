@@ -1,20 +1,13 @@
 {
   "name": "time-manager",
-  "version": "3.7.0",
+  "version": "4.0.0",
   "description": "A minimal Electron application",
   "main": "./js/main.js",
   "scripts": {
-    "package-win": "electron-packager .  --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"realse\"",
+    "package-win": "electron-packager .   --overwrite --asar=true    --icon=assets/icons/win/icon.ico  --out=release-builds",
     "start": "electron ."
   },
   "repository": "https://github.com/PhoenixNil/time_manager",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {

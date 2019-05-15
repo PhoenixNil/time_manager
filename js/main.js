@@ -14,7 +14,6 @@ const { host, user, password, database } = require('../config');
 let mainWindow
 let SetWindow
 var K, flag = 0;
-process.env
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -45,7 +44,12 @@ function createWindow() {
     app.quit()
   })
   SetWindow.on('closed', function () {
-    exec('close.bat')
+    exec(path.join(__dirname, '../other/close.bat'), (error, stdout, stderr) => {
+      if (error) {
+        throw error;
+      }
+      console.log(stdout);
+    });
     app.quit();
   })
 }
@@ -57,6 +61,12 @@ app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
+  exec(path.join(__dirname, '../other/close.bat'), (error, stdout, stderr) => {
+    if (error) {
+      throw error;
+    }
+    console.log(stdout);
+  });
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') app.quit()
@@ -68,6 +78,12 @@ app.on('activate', function () {
   if (mainWindow === null) createWindow()
 })
 ipcMain.on('window-all-closed', () => {
+  exec(path.join(__dirname, '../other/close.bat'), (error, stdout, stderr) => {
+    if (error) {
+      throw error;
+    }
+    console.log("close");
+  });
   mainWindow.close();
 });
 ipcMain.on('hide-window', () => {
@@ -96,8 +112,6 @@ connection.connect(function (err) {
   }
   else {
     console.log('Connected');
-    console.log(host)
-    console.log(password)
   }
 });
 ipcMain.on('create', (event, arg1, arg2) => {
@@ -165,7 +179,7 @@ ipcMain.on('exeDisable', (event, arg) => {
     }
     console.log("success")
   })
-  execFile(path.join(__dirname, '../other/my.bat'), (error, stdout, stderr) => {
+  exec(path.join(__dirname, '../other/my.bat'), (error, stdout, stderr) => {
     if (error) {
       throw error;
     }

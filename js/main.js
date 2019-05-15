@@ -8,11 +8,13 @@ const fs = require('fs')
 const execFile = require('child_process').execFile;
 const readline = require('readline');
 const path = require('path')
+const { host, user, password, database } = require('../config');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 let SetWindow
 var K, flag = 0;
+process.env
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -83,10 +85,10 @@ ipcMain.on('BackSet', function () {
 // 监听渲染进程发送的消息
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host: 'db4free.net',//远程MySQL数据库的ip地址
-  user: 'ooot2007',
-  password: 'zjhZJH8656866',
-  database: 'electron_test'
+  host: host,//远程MySQL数据库的ip地址,你需要自己建立一个config.json文件
+  user: user,
+  password: password,
+  database: database
 })
 connection.connect(function (err) {
   if (err) {
@@ -94,6 +96,8 @@ connection.connect(function (err) {
   }
   else {
     console.log('Connected');
+    console.log(host)
+    console.log(password)
   }
 });
 ipcMain.on('create', (event, arg1, arg2) => {

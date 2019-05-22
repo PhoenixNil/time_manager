@@ -17,13 +17,13 @@ var K, flag = 0;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 900, height: 690, frame: false,
+    width: 950, height: 790, frame: false,
     webPreferences: {
       nodeIntegration: true
     }
   })
   SetWindow = new BrowserWindow({
-    width: 900, height: 790, webPreferences: {
+    width: 930, height: 790, webPreferences: {
       nodeIntegration: true
     }, resizable: false
   })

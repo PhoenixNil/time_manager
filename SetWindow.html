@@ -16,39 +16,35 @@
         <v-app id="inspire">
             <v-container fluid>
                 <div style="max-width: 570px">
-                    <v-card height="500px">
-                        <v-container fluid grid-list-lg>
-                            <v-layout row wrap>
-                                <v-flex xs12>
-                                    <v-toolbar :color="color" dark id="reallycolor">
-                                        <v-toolbar-title>Setting Time</v-toolbar-title>
-                                        <v-spacer></v-spacer>
-                                        <v-icon>build</v-icon>
-                                    </v-toolbar>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-card color="azure" class="white--text">
-                                        <v-layout row>
-                                            <v-flex xs12>
-                                                <v-img :src="imgs[i]" height="300px" contain id="setimg"></v-img>
-                                            </v-flex>
-                                        </v-layout>
-                                        <v-card-actions>
-                                            <v-btn flat :color="color" v-on:click="like">
-                                                <v-icon :color="love">favorite</v-icon>like
-                                            </v-btn>
-                                            <v-btn flat :color="color" v-on:click="dislike">
-                                                <v-icon color="grey">thumb_down</v-icon>hate
-                                            </v-btn>
-                                        </v-card-actions>
-                                    </v-card>
-                                </v-flex>
-                                <v-card-text class="headline mb-0">
-                                    do you like this photo?
-                                </v-card-text>
-                            </v-layout>
-                        </v-container>
-                    </v-card>
+                    <v-container fluid grid-list-lg>
+                        <v-layout row wrap>
+                            <v-flex xs12>
+                                <v-toolbar :color="color" dark id="reallycolor">
+                                    <v-toolbar-title>Setting Time</v-toolbar-title>
+                                    <v-spacer></v-spacer>
+                                    <v-icon>build</v-icon>
+                                </v-toolbar>
+                            </v-flex>
+                            <v-flex xs12>
+                                <v-card>
+                                    <v-flex xs12>
+                                        <v-img :src="imgs[i]" height="300px" contain id="setimg"></v-img>
+                                    </v-flex>
+                                    <v-card-actions>
+                                        <v-card-text class="headline mb-0" color="black">
+                                            do you like this photo?
+                                        </v-card-text>
+                                        <v-btn flat :color="color" v-on:click="like">
+                                            <v-icon :color="love">favorite</v-icon>like
+                                        </v-btn>
+                                        <v-btn flat :color="color" v-on:click="dislike">
+                                            <v-icon color="grey">thumb_down</v-icon>hate
+                                        </v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
                 </div>
                 <div style="position: absolute; bottom: 300px;right: 0px;">
                     <v-card max-width="300px">

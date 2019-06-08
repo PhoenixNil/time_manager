@@ -51,7 +51,7 @@ var vm = new Vue({
                 case 2: return 'grey'
                 case 3: return '#29B6F6'
                 case 4: return '#EEDD82'
-                case 5: return 'dark'
+                case 5: return 'black'
                 case 6: return 'purple'
             }
         }
